@@ -52,7 +52,7 @@ AssertCallback(string testName, list actual, list expected, integer result)
 }
 
 /*
-    Searches 'expected' inside 'src' and checks if the value was fount 'n' times
+    Searches 'expected' inside 'src' and checks if the value was found 'n' times
     string testName: The name of the test defined in the calling function
     list src: The collection to be tested
     list expected: boxed value to be found
