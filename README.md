@@ -61,16 +61,22 @@ The final result will be displayed on local chat on `DEBUG_CHANNEL`. The message
 Here are some output example
 
 > Running test '_key2 should appear only once'
->      Expected '1' Actual '1'
->      SUCCESS
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expected '1' Actual '1'
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUCCESS
 
 > Running test 'message should be 10#2#4'
->     Expected '10#2#4' Actual '8c179a2f-9459-a59b-cf26-da89fa3546f3'
->     FAILED: Types mismatch
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expected '10#2#4' Actual '8c179a2f-9459-a59b-cf26-da89fa3546f3'
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAILED: Types mismatch
 
 > Running test 'message should be 10#2#4#3#5'
->     Expected '10#2#4#3#5' Actual '15#2#4#3#5'
->     FAILED: Values don't match
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expected '10#2#4#3#5' Actual '15#2#4#3#5'
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAILED: Values don't match
 
 ### How to override `AssertMessaging(string message)`
 
