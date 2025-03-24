@@ -18,37 +18,29 @@ AssertCallback(string testName, list actual, list expected, integer result)
 {
     AssertMessaging("Running test '" + testName + "'");
     AssertMessaging("\tExpected '" + llList2String(expected, 0) + "' Actual '" + llList2String(actual, 0) + "'");
-    switch (result)
+    if (result == __ASSERT_KO_EMPTY_EXPECTED__)
     {
-        case (__ASSERT_KO_EMPTY_EXPECTED__):
-        {
-            AssertMessaging("\tFAILED. No expected value provided");
-            break;
-        }
-        case (__ASSERT_KO_EMPTY_SOURCE__):
-        {
-            AssertMessaging("\tFAILED. No source value provided");
-            break;
-        }
-        case (__ASSERT_OK__):
-        {
-            AssertMessaging("\tSUCCESS");
-            break;
-        }
-        case (__ASSERT_KO_INEQUAL__):
-        {
-            AssertMessaging("\tFAILED: Values don't match");
-            break;
-        }
-        case (__ASSERT_KO_TYPE_MISMATCH__):
-        {
-            AssertMessaging("\tFAILED: Types mismatch");
-            break;
-        }
-        default:
-        {
-            AssertMessaging("\tUNKNOWN ERROR");
-        }
+        AssertMessaging("\tFAILED. No expected value provided");
+    }
+    else if (result == __ASSERT_KO_EMPTY_SOURCE__)
+    {
+        AssertMessaging("\tFAILED. No source value provided");
+    }
+    else if (result == __ASSERT_OK__)
+    {
+        AssertMessaging("\tSUCCESS");
+    }
+    else if (result == __ASSERT_KO_INEQUAL__)
+    {
+        AssertMessaging("\tFAILED: Values don't match");
+    }
+    else if (result == __ASSERT_KO_TYPE_MISMATCH__)
+    {
+        AssertMessaging("\tFAILED: Types mismatch");
+    }
+    else
+    {
+        AssertMessaging("\tUNKNOWN ERROR");
     }
 }
 
@@ -78,41 +70,29 @@ AssertIsEqual(string testName, list src, list expected)
         {
             result = __ASSERT_KO_TYPE_MISMATCH__;
         }
-        else
+        else if (type == TYPE_INTEGER)
         {
-            switch (type)
-            {
-                case (TYPE_INTEGER):
-                {
-                    result = llList2Integer(src, 0) == llList2Integer(expected, 0);
-                    break;
-                }
-                case (TYPE_FLOAT):
-                {
-                    result = llList2Float(src, 0) == llList2Float(expected, 0);
-                    break;
-                }
-                case (TYPE_STRING):
-                {
-                    result = llList2String(src, 0) == llList2String(expected, 0);
-                    break;
-                }
-                case (TYPE_KEY):
-                {
-                    result = llList2Key(src, 0) == llList2Key(expected, 0);
-                    break;
-                }
-                case (TYPE_VECTOR):
-                {
-                    result = llList2Vector(src, 0) == llList2Vector(expected, 0);
-                    break;
-                }
-                case (TYPE_ROTATION):
-                {
-                    result = llList2Rot(src, 0) == llList2Rot(expected, 0);
-                    break;
-                }
-            }
+            result = llList2Integer(src, 0) == llList2Integer(expected, 0);
+        }
+        else if (type == TYPE_FLOAT)
+        {
+            result = llList2Float(src, 0) == llList2Float(expected, 0);
+        }
+        else if (type == TYPE_STRING)
+        {
+            result = llList2String(src, 0) == llList2String(expected, 0);
+        }
+        else if (type == TYPE_KEY)
+        {
+            result = llList2Key(src, 0) == llList2Key(expected, 0);
+        }
+        else if (type == TYPE_VECTOR)
+        {
+            result = llList2Vector(src, 0) == llList2Vector(expected, 0);
+        }
+        else if (type == TYPE_ROTATION)
+        {
+            result = llList2Rot(src, 0) == llList2Rot(expected, 0);
         }
     }
     AssertCallback(testName, src, expected, result);
