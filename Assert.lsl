@@ -14,6 +14,13 @@ AssertMessaging(string message)
 }
 
 #endif // __ASSERT_MESSAGING__
+/*
+    Call back function to prepare output messages
+    string testName: The name of the test defined in the calling function
+    list actual: boxed value that was returned by the tested function
+    list expected: boxed value that was expected by the tested function
+    integer result: Enum value for the result of the test
+*/
 AssertCallback(string testName, list actual, list expected, integer result)
 {
     AssertMessaging("Running test '" + testName + "'");
@@ -44,6 +51,13 @@ AssertCallback(string testName, list actual, list expected, integer result)
     }
 }
 
+/*
+    Searches 'expected' inside 'src' and checks if the value was found 'n' times
+    string testName: The name of the test defined in the calling function
+    list src: The collection to be tested
+    list expected: boxed value to be found
+    integer n: The amount of time 'expected' should be found
+*/
 AssertContainsExactlyNTimes(string testName, list src, list expected, integer n)
 {
     integer instance = -1;
@@ -52,6 +66,12 @@ AssertContainsExactlyNTimes(string testName, list src, list expected, integer n)
     AssertCallback(testName, [ instance ], [ n ], n == instance);
 }
 
+/*
+    Checks if 2 values are strictly equal
+    string testName: The name of the test defined in the calling function
+    list src: boxed value to be tested
+    list expected: boxed value to be found
+*/
 AssertIsEqual(string testName, list src, list expected)
 {
     integer result = __ASSERT_KO_UNKNOWN__;
